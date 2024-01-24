@@ -1,0 +1,21 @@
+.empty-screen-container {
+    height: 100%;
+    width: 500px;
+    & .logo-container {
+        height: calc(100% - 82px);
+        & .logo-wrapper {
+            height: 200px;
+            width: 200px;
+            overflow: hidden;
+            & .logo-img {
+                transform: scale(1.5);
+            }
+        }
+    }
+    & .msg-wrapper {
+        color: #9399a2ff;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+}
