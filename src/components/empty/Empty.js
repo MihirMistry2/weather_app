@@ -8,14 +8,7 @@ export const Empty = () => {
             <Search />
             <div className="logo-container d-flex-column align-items justify-content">
                 <div className="logo-wrapper">
-                    <img
-                        id="logo-img"
-                        className="logo-img"
-                        src={LogoImg}
-                        alt="logo"
-                        width="200px"
-                        height="200px"
-                    />
+                    <img id="logo-img" className="logo-img" src={LogoImg} alt="logo" width="200px" height="200px"/>
                 </div>
                 <div className="msg-wrapper">
                     allow location access or search via city name.
