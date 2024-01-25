@@ -91,14 +91,20 @@ const App = () => {
         fetch(url)
             .then((resp) => resp.json())
             .then((result) => {
-                if (result.cod && Number(result.cod) === 200) {
-                    const latitude = result.city.coord.lat;
-                    const longitude = result.city.coord.lon;
-                    const url = `${api.base_url}?lat=${latitude}&lon=${longitude}&appid=${api.key}&units=metric`;
-                    fetchForecastDetails(url);
-                    return;
+                try {
+                    if (result.cod && Number(result.cod) >= 200 && Number(result.cod) < 300) {
+                        const latitude = result.city.coord.lat;
+                        const longitude = result.city.coord.lon;
+                        const url = `${api.base_url}?lat=${latitude}&lon=${longitude}&appid=${api.key}&units=metric`;
+                        fetchForecastDetails(url);
+                    } else {
+                        alert(`Code: ${result.cod}\nMessage: ${result.message}`);
+                        setWeatherDetails(null);
+                    }
+                    updateSearchButtonIconState();
+                } catch (error) {
+                    throw error;
                 }
-                setWeatherDetails(null);
             })
             .catch((error) => {
                 updateSearchButtonIconState();
@@ -114,12 +120,18 @@ const App = () => {
         fetch(url)
             .then((resp) => resp.json())
             .then((result) => {
-                if (result.cod && Number(result.cod) === 200) {
-                    const { weather_details } = getFormattedJSON(result);
-                    setWeatherDetails(weather_details);
-                    return;
+                try {
+                    if (result.cod && Number(result.cod) >= 200 && Number(result.cod) < 300) {
+                        const { weather_details } = getFormattedJSON(result);
+                        setWeatherDetails(weather_details);
+                    } else {
+                        alert(`Code: ${result.cod}\nMessage: ${result.message}`);
+                        updateSearchButtonIconState();
+                        setWeatherDetails(null);
+                    }
+                } catch (error) {
+                    throw error;
                 }
-                setWeatherDetails(null);
             })
             .catch((error) => {
                 alert(error.message);
@@ -132,15 +144,18 @@ const App = () => {
      * @param {string} state - (loader|default)
      */
     const updateSearchButtonIconState = (state) => {
-        const $icon = document.getElementById('search-icon');
+        const $icon = document.querySelector('.main-container .search-icon');
+        const $btn = document.querySelector('.main-container .search-btn');
         switch (state) {
             case 'loader':
                 $icon.src = LoaderIcon;
                 $icon.classList.add('rotate');
+                $btn.classList.add('not-allow');
                 break;
             default:
                 $icon.src = SeachIcon;
                 $icon.classList.remove('rotate');
+                $btn.classList.remove('not-allow');
                 break;
         }
     };
@@ -150,7 +165,7 @@ const App = () => {
      */
     const onSearchChange = (e) => {
         const value = e.target.value;
-        const $input = document.getElementById('search');
+        const $input = document.querySelector('.main-container .search-container #search');
         $input.classList.remove('error');
         setSearch(value);
     };

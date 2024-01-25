@@ -12,7 +12,7 @@ const Search = () => {
     return (
         <div className="search-container">
             <input type="search" name="search" id="search" placeholder="Search..." value={search} onChange={onSearchChange}/>
-            <button onClick={onSearchButtonClick}>
+            <button className='search-btn' onClick={onSearchButtonClick}>
                 <img id="search-icon" className="search-icon" src={SearchIcon} alt="search-icon" width="30px" height="30px"/>
             </button>
         </div>
