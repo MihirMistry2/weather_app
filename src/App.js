@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import Empty from './components/empty/Empty';
 import LoaderIcon from './assets/icons/loader-icon.svg';
 import SeachIcon from './assets/icons/search-icon.svg';
@@ -84,6 +84,26 @@ const App = () => {
         return true;
     };
     /**
+     * Change the icon of the search button according to the given state.
+     * @param {string} state - (loader|default)
+     */
+    const updateSearchButtonIconState = (state) => {
+        const $icon = document.querySelector('.main-container .search-icon');
+        const $btn = document.querySelector('.main-container .search-btn');
+        switch (state) {
+            case 'loader':
+                $icon.src = LoaderIcon;
+                $icon.classList.add('rotate');
+                $btn.classList.add('not-allow');
+                break;
+            default:
+                $icon.src = SeachIcon;
+                $icon.classList.remove('rotate');
+                $btn.classList.remove('not-allow');
+                break;
+        }
+    };
+    /**
      * Fetch weather information by city name using the OpenWeatherMap API and generate a new URL with latitude and longitude to obtain forecast details.
      * @param {string} url - API URL that contains city name.
      */
@@ -140,26 +160,6 @@ const App = () => {
             });
     };
     /**
-     * Change the icon of the search button according to the given state.
-     * @param {string} state - (loader|default)
-     */
-    const updateSearchButtonIconState = (state) => {
-        const $icon = document.querySelector('.main-container .search-icon');
-        const $btn = document.querySelector('.main-container .search-btn');
-        switch (state) {
-            case 'loader':
-                $icon.src = LoaderIcon;
-                $icon.classList.add('rotate');
-                $btn.classList.add('not-allow');
-                break;
-            default:
-                $icon.src = SeachIcon;
-                $icon.classList.remove('rotate');
-                $btn.classList.remove('not-allow');
-                break;
-        }
-    };
-    /**
      * Sets the search value on search input change.
      * @param {Event} e
      */
@@ -181,6 +181,14 @@ const App = () => {
         }
     };
 
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((pos) => {
+            const { latitude, longitude } = pos.coords;
+            const url = `${api.base_url}?lat=${latitude}&lon=${longitude}&appid=${api.key}&units=metric`;
+            fetchForecastDetails(url);
+        });
+    }, []);
+    
     return (
         <div className="main-container d-flex align-items justify-content">
             {weatherDetails ? (
