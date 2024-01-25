@@ -27,8 +27,8 @@ const App = () => {
      */
 
     const api = {
-        key: 'c7ea2254941a00f9285ac2800a650363',
-        base_url: 'https://api.openweathermap.org/data/2.5/forecast',
+        key: process.env.REACT_APP_OPENWEATHERMAP_KEY,
+        base_url: process.env.REACT_APP_OPENWEATHERMAP_BASE,
     };
     /** @type {[search: string, setSearch: Function]}  */
     const [search, setSearch] = useState('');
