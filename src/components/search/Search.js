@@ -8,11 +8,11 @@ import './Search.css';
  * @returns {React.ReactElement} React element that renders a search input with a button.
  */
 const Search = () => {
-    const { search, onSearchChange } = useContext(SearchContext);
+    const { search, onSearchChange, onSearchButtonClick } = useContext(SearchContext);
     return (
         <div className="search-container">
             <input type="search" name="search" id="search" placeholder="Search..." value={search} onChange={onSearchChange}/>
-            <button>
+            <button onClick={onSearchButtonClick}>
                 <img id="search-icon" className="search-icon" src={SearchIcon} alt="search-icon" width="30px" height="30px"/>
             </button>
         </div>
