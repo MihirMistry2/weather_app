@@ -2,10 +2,10 @@ import Search from '../search/Search';
 import LogoImg from '../../assets/images/logo.png';
 import './Empty.css';
 
-export const Empty = () => {
+export const Empty = ({ forwardedRef }) => {
     return (
         <div className="empty-screen-container">
-            <Search />
+            <Search ref={forwardedRef} />
             <div className="logo-container d-flex-column align-items justify-content">
                 <div className="logo-wrapper">
                     <img id="logo-img" className="logo-img" src={LogoImg} alt="logo" width="200px" height="200px"/>

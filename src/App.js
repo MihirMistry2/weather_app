@@ -1,10 +1,8 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 import Empty from './components/empty/Empty';
-import LoaderIcon from './assets/icons/loader-icon.svg';
-import SeachIcon from './assets/icons/search-icon.svg';
 import './App.css';
 
-const SearchContext = createContext();
+const FetchFunctionContext = createContext();
 const App = () => {
     /**
      * @typedef {Object} WeatherDetails
@@ -30,10 +28,9 @@ const App = () => {
         key: process.env.REACT_APP_OPENWEATHERMAP_KEY,
         base_url: process.env.REACT_APP_OPENWEATHERMAP_BASE,
     };
-    /** @type {[search: string, setSearch: Function]}  */
-    const [search, setSearch] = useState('');
     /** @type {[weatherDetails: (WeatherDetails|null), setWeatherDetails: Function]} */
     const [weatherDetails, setWeatherDetails] = useState(null);
+    const ref = useRef();
 
     /**
      * Formatting JSON response data.
@@ -72,38 +69,6 @@ const App = () => {
         return result;
     };
     /**
-     * Validate the search input field.
-     * @returns {boolean}
-     */
-    const validateSearchInput = () => {
-        if (search === '') {
-            const $input = document.getElementById('search');
-            $input.classList.add('error');
-            return false;
-        }
-        return true;
-    };
-    /**
-     * Change the icon of the search button according to the given state.
-     * @param {string} state - (loader|default)
-     */
-    const updateSearchButtonIconState = (state) => {
-        const $icon = document.querySelector('.main-container .search-icon');
-        const $btn = document.querySelector('.main-container .search-btn');
-        switch (state) {
-            case 'loader':
-                $icon.src = LoaderIcon;
-                $icon.classList.add('rotate');
-                $btn.classList.add('not-allow');
-                break;
-            default:
-                $icon.src = SeachIcon;
-                $icon.classList.remove('rotate');
-                $btn.classList.remove('not-allow');
-                break;
-        }
-    };
-    /**
      * Fetch weather information by city name using the OpenWeatherMap API and generate a new URL with latitude and longitude to obtain forecast details.
      * @param {string} url - API URL that contains city name.
      */
@@ -121,13 +86,13 @@ const App = () => {
                         alert(`Code: ${result.cod}\nMessage: ${result.message}`);
                         setWeatherDetails(null);
                     }
-                    updateSearchButtonIconState();
+                    ref.current?.updateSearchButtonIconState();
                 } catch (error) {
                     throw error;
                 }
             })
             .catch((error) => {
-                updateSearchButtonIconState();
+                ref.current?.updateSearchButtonIconState();
                 alert(error.message);
                 setWeatherDetails(null);
             });
@@ -146,7 +111,7 @@ const App = () => {
                         setWeatherDetails(weather_details);
                     } else {
                         alert(`Code: ${result.cod}\nMessage: ${result.message}`);
-                        updateSearchButtonIconState();
+                        ref.current?.updateSearchButtonIconState();
                         setWeatherDetails(null);
                     }
                 } catch (error) {
@@ -155,30 +120,9 @@ const App = () => {
             })
             .catch((error) => {
                 alert(error.message);
-                updateSearchButtonIconState();
+                ref.current?.updateSearchButtonIconState();
                 setWeatherDetails(null);
             });
-    };
-    /**
-     * Sets the search value on search input change.
-     * @param {Event} e
-     */
-    const onSearchChange = (e) => {
-        const value = e.target.value;
-        const $input = document.querySelector('.main-container .search-container #search');
-        $input.classList.remove('error');
-        setSearch(value);
-    };
-    /**
-     * Creates an API URL that is based on the city name and adds a loading icon to the button.
-     * @param {Event} e
-     */
-    const onSearchButtonClick = (e) => {
-        if (validateSearchInput()) {
-            const url = `${api.base_url}?q=${search}&appid=${api.key}&units=metric&cnt=1`;
-            updateSearchButtonIconState('loader');
-            fetchWeatherDetails(url, true);
-        }
     };
 
     useEffect(() => {
@@ -188,18 +132,14 @@ const App = () => {
             fetchForecastDetails(url);
         });
     }, []);
-    
+
     return (
         <div className="main-container d-flex align-items justify-content">
-            {weatherDetails ? (
-                <>App</>
-            ) : (
-                <SearchContext.Provider value={{ search, onSearchChange, onSearchButtonClick }}>
-                    <Empty />
-                </SearchContext.Provider>
-            )}
+            <FetchFunctionContext.Provider value={{ fetchWeatherDetails, fetchForecastDetails }}>
+                {weatherDetails ? <>App</> : <Empty forwardedRef={ref} />}
+            </FetchFunctionContext.Provider>
         </div>
     );
 };
 export default App;
-export { SearchContext };
+export { FetchFunctionContext };
