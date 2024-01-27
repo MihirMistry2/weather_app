@@ -25,8 +25,15 @@ const App = () => {
      * @property {string} icon
      */
     /**
+     * @typedef {Object} TodaysForecast
+     * @property {string} time
+     * @property {string} temp
+     * @property {string} icon
+     */
+    /**
      * @typedef {Object} FormatedDate
      * @property {WeatherDetails} weather_details
+     * @property {TodaysForecast[]} todays_details
      */
 
     const api = {
@@ -35,6 +42,8 @@ const App = () => {
     };
     /** @type {[weatherDetails: (WeatherDetails|null), setWeatherDetails: Function]} */
     const [weatherDetails, setWeatherDetails] = useState(null);
+    /** @type {[todaysForecast: (TodaysForecast[]|[]), setTodaysForecast: Function]} */
+    const [todaysForecast, setTodaysForecast] = useState([]);
     const ref = useRef();
 
     /**
@@ -43,35 +52,59 @@ const App = () => {
      * @returns {FormatedDate}
      */
     const getFormattedJSON = (data) => {
-        const result = {
-            weather_details: {},
+        const dateConfig = {
+            hour: 'numeric',
+            hour12: true,
         };
-        const main = data.list[0].main;
-        const wind = data.list[0].wind;
-        const weather = data.list[0].weather[0];
-        result.weather_details.city_name = data.city.name;
-        result.weather_details.temperature = Math.round(main.temp);
-        result.weather_details.min_temperature = Math.round(main.temp_min);
-        result.weather_details.max_temperature = Math.round(main.temp_max);
-        result.weather_details.feels_like = Math.round(main.feels_like);
-        result.weather_details.humidity = main.humidity;
-        result.weather_details.pressure = main.pressure;
-        result.weather_details.wind = Math.round(wind.speed * 3.6);
-        result.weather_details.description = weather.description;
-        result.weather_details.sunrise = new Date(
-            data.city.sunrise * 1000
-        ).toLocaleString('en', {
-            hour: 'numeric',
-            hour12: true,
-        });
-        result.weather_details.sunset = new Date(
-            data.city.sunset * 1000
-        ).toLocaleString('en', {
-            hour: 'numeric',
-            hour12: true,
-        });
-        result.weather_details.icon = `http://openweathermap.org/img/wn/${weather.icon}@4x.png`;
-        return result;
+        const getWeatherDetails = () => {
+            let weatherDetailsObj = {};
+            try {
+                const main = data.list[0].main;
+                const wind = data.list[0].wind;
+                const weather = data.list[0].weather[0];
+                weatherDetailsObj = {
+                    city_name: data.city.name,
+                    temperature: Math.round(main.temp),
+                    min_temperature: Math.round(main.temp_min),
+                    max_temperature: Math.round(main.temp_max),
+                    feels_like: Math.round(main.feels_like),
+                    humidity: main.humidity,
+                    pressure: main.pressure,
+                    wind: Math.round(wind.speed * 3.6),
+                    description: weather.description,
+                    icon: `http://openweathermap.org/img/wn/${weather.icon}@4x.png`,
+                    sunrise: new Date(data.city.sunrise * 1000).toLocaleString('en', dateConfig),
+                    sunset: new Date(data.city.sunset * 1000).toLocaleString('en', dateConfig),
+                };
+            } catch (error) {
+                console.error(error.message);
+            }
+            return weatherDetailsObj;
+        };
+        const getTodaysDetails = () => {
+            const todaysDetailsObj = [];
+            try {
+                for (const obj of data.list) {
+                    const currentDate = new Date().toLocaleDateString();
+                    const dataDate = new Date(obj.dt_txt).toLocaleDateString();
+                    let hours = '9 AM';
+                    if (dataDate === currentDate) {
+                        const time = new Date(obj.dt_txt).toLocaleString('en', dateConfig);
+                        const temp = Math.round(obj.main.temp);
+                        const icon = `http://openweathermap.org/img/wn/${obj.weather[0].icon}@4x.png`;
+                        todaysDetailsObj.push({ time, temp, icon });
+                    }
+                }
+            } catch (error) {
+                console.error(error.message);
+            }
+            return todaysDetailsObj;
+        };
+
+        return {
+            weather_details: getWeatherDetails(),
+            todays_details: getTodaysDetails(),
+        };
     };
     /**
      * Fetch weather information by city name using the OpenWeatherMap API and generate a new URL with latitude and longitude to obtain forecast details.
@@ -112,8 +145,9 @@ const App = () => {
             .then((result) => {
                 try {
                     if (result.cod && Number(result.cod) >= 200 && Number(result.cod) < 300) {
-                        const { weather_details } = getFormattedJSON(result);
+                        const { weather_details, todays_details } = getFormattedJSON(result);
                         setWeatherDetails(weather_details);
+                        setTodaysForecast(todays_details.splice(0, 3));
                     } else {
                         alert(`Code: ${result.cod}\nMessage: ${result.message}`);
                         ref.current?.updateSearchButtonIconState();
@@ -154,7 +188,7 @@ const App = () => {
                                 city_name={weatherDetails.city_name}
                                 description={weatherDetails.description}
                             />
-                            <TodaysForecast />
+                            <TodaysForecast todaysForecast={todaysForecast} />
                         </div>
                         <div className="forecast-and-air-container">
                             <FiveDaysForecast />

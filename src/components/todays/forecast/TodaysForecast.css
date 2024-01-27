@@ -3,7 +3,7 @@
     border-radius: 16px;
     background-color: #202b3b;
     box-shadow: #00000014 0px 0px 0px;
-    height: calc(35% - 76px);
+    height: calc(36% - 72px);
     padding: 22px;
     max-height: 214px;
     & .title {

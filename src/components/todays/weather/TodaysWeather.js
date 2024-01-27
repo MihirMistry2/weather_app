@@ -1,3 +1,4 @@
+import CelsiusIcon from '../../../assets/icons/celsius-icon.svg';
 import FeelsLikeIcon from '../../../assets/icons/thermometer-icon.svg';
 import MinTempIcon from '../../../assets/icons/thermometer-minus-icon.svg';
 import MaxTempIcon from '../../../assets/icons/thermometer-plus-icon.svg';
@@ -16,7 +17,7 @@ import './TodaysWeather.css';
 /**
  * This component renders a today's weather info.
  * @param {Props} props
- * @returns
+ * @returns {React.ReactElement} React element that renders a search input with a button.
  */
 const TodaysWeather = (props) => {
     /**
@@ -33,7 +34,7 @@ const TodaysWeather = (props) => {
 
     return (
         <div className="todays-weather-temp-container">
-            <div className="title">weather</div>
+            <div className="d-flex title">weather (<img className='celsius-icon' src={CelsiusIcon} alt="celsius icon" width="30px" height="30px"/>)</div>
             <div className="d-flex align-items justify-content temp-and-icon-container">
                 <div className="d-flex align-items justify-content icon-wrapper">
                     <img src={props.icon} width="200px" height="200px" />

@@ -1,6 +1,6 @@
 .todays-weather-temp-container {
     margin: 16px;
-    height: calc(55% - 16px);
+    height: calc(54% - 16px);
     padding: 0px 22px;
     max-height: 380px;
     & .title {
@@ -9,6 +9,9 @@
         font-size: 28px;
         text-transform: uppercase;
         margin-bottom: 6px;
+        & .celsius-icon {
+            margin-top: 6px;
+        }
     }
     & .temp-and-icon-container {
         & .icon-wrapper {
@@ -48,8 +51,8 @@
             & .feels-like-wrapper,
             & .min-temp-wrapper,
             & .max-temp-wrapper {
-                & .fa-solid {
-                    margin-right: 10px;
+                & img {
+                    margin-right: 6px;
                 }
             }
         }
