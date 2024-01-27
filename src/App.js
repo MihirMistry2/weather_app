@@ -145,7 +145,15 @@ const App = () => {
                     <>
                         <div className="current-weather-info-container">
                             <Search ref={ref} />
-                            <TodaysWeather />
+                            <TodaysWeather
+                                icon={weatherDetails.icon}
+                                temperature={weatherDetails.temperature}
+                                feels_like={weatherDetails.feels_like}
+                                min_temperature={weatherDetails.min_temperature}
+                                max_temperature={weatherDetails.max_temperature}
+                                city_name={weatherDetails.city_name}
+                                description={weatherDetails.description}
+                            />
                             <TodaysForecast />
                         </div>
                         <div className="forecast-and-air-container">
