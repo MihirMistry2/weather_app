@@ -1,0 +1,59 @@
+.todays-forecast-container {
+    margin: 16px;
+    border-radius: 16px;
+    background-color: #202b3b;
+    box-shadow: #00000014 0px 0px 0px;
+    height: calc(35% - 76px);
+    padding: 22px;
+    max-height: 214px;
+    & .title {
+        text-transform: uppercase;
+        color: #9399a2ff;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+    & .forecast-container {
+        display: flex;
+        & .info {
+            width: 33%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-right: 1px solid#35455e;
+            border-radius: 2px;
+            &:last-child {
+                border-right: none !important;
+            }
+            & .time-wrapper {
+                text-transform: uppercase;
+                font-size: 18px;
+                font-weight: 600;
+                width: fit-content;
+                padding: 4px 12px;
+                border-radius: 16px;
+                color: #202b3b;
+                background-color: #dde0e4ff;
+            }
+            & .icon-wrapper {
+                width: 76px;
+                height: 76px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                & img {
+                    transform: scale(1.2);
+                }
+            }
+            & .temp-wrapper {
+                color: #c4cad3ff;
+                text-transform: uppercase;
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+    }
+}

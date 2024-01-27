@@ -69,7 +69,9 @@ const Search = (props, ref) => {
      */
     const onSearchButtonClick = (e) => {
         if (validateSearchInput()) {
-            const url = `${process.env.REACT_APP_OPENWEATHERMAP_BASE}?q=${search}&appid=${process.env.REACT_APP_OPENWEATHERMAP_KEY}&units=metric&cnt=1`;
+            const root = process.env.REACT_APP_OPENWEATHERMAP_BASE;
+            const key = process.env.REACT_APP_OPENWEATHERMAP_KEY;
+            const url = `${root}?q=${search}&appid=${key}&units=metric&cnt=1`;
             updateSearchButtonIconState('loader');
             fetchWeatherDetails(url, true);
         }

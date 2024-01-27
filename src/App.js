@@ -1,5 +1,10 @@
 import { createContext, useEffect, useRef, useState } from 'react';
 import Empty from './components/empty/Empty';
+import Search from './components/search/Search';
+import TodaysWeather from './components/todays/weather/TodaysWeather';
+import TodaysForecast from './components/todays/forecast/TodaysForecast';
+import AirInfo from './components/air_info/AirInfo';
+import FiveDaysForecast from './components/five_days_forecast/FiveDaysForecast';
 import './App.css';
 
 const FetchFunctionContext = createContext();
@@ -136,7 +141,21 @@ const App = () => {
     return (
         <div className="main-container d-flex align-items justify-content">
             <FetchFunctionContext.Provider value={{ fetchWeatherDetails, fetchForecastDetails }}>
-                {weatherDetails ? <>App</> : <Empty forwardedRef={ref} />}
+                {weatherDetails ? (
+                    <>
+                        <div className="current-weather-info-container">
+                            <Search ref={ref} />
+                            <TodaysWeather />
+                            <TodaysForecast />
+                        </div>
+                        <div className="forecast-and-air-container">
+                            <FiveDaysForecast />
+                            <AirInfo />
+                        </div>
+                    </>
+                ) : (
+                    <Empty forwardedRef={ref} />
+                )}
             </FetchFunctionContext.Provider>
         </div>
     );

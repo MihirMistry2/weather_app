@@ -17,4 +17,14 @@
     height: calc(100vh - 36px);
     color: #fff;
     padding: 18px;
+    & .current-weather-info-container {
+        width: 40%;
+        height: 100%;
+        overflow: auto;
+    }
+    & .forecast-and-air-container {
+        width: 60%;
+        height: 100%;
+        overflow: auto;
+    }
 }
