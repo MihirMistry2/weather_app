@@ -11,16 +11,10 @@
         margin-bottom: 6px;
     }
     & .temp-and-icon-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         & .icon-wrapper {
             overflow: hidden;
             height: 200px;
             width: 180px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             & img {
                 transform: scale(1.1);
             }
@@ -32,13 +26,9 @@
             overflow: hidden;
             height: 200px;
             width: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
     }
     & .info-container {
-        display: flex;
         margin-top: 6px;
         & .feels-like-wrapper,
         & .min-temp-wrapper,

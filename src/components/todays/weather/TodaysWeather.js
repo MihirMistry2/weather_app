@@ -1,3 +1,6 @@
+import FeelsLikeIcon from '../../../assets/icons/thermometer-icon.svg';
+import MinTempIcon from '../../../assets/icons/thermometer-minus-icon.svg';
+import MaxTempIcon from '../../../assets/icons/thermometer-plus-icon.svg';
 import './TodaysWeather.css';
 
 /**
@@ -12,8 +15,8 @@ import './TodaysWeather.css';
  */
 /**
  * This component renders a today's weather info.
- * @param {Props} props 
- * @returns 
+ * @param {Props} props
+ * @returns
  */
 const TodaysWeather = (props) => {
     /**
@@ -31,41 +34,31 @@ const TodaysWeather = (props) => {
     return (
         <div className="todays-weather-temp-container">
             <div className="title">weather</div>
-            <div className="temp-and-icon-container">
-                <div className="icon-wrapper">
+            <div className="d-flex align-items justify-content temp-and-icon-container">
+                <div className="d-flex align-items justify-content icon-wrapper">
                     <img src={props.icon} width="200px" height="200px" />
                 </div>
-                <div className="temperature-wrapper">
-                    {props.temperature}&deg;
-                </div>
+                <div className="d-flex align-items justify-content temperature-wrapper">{props.temperature}&deg;</div>
             </div>
-            <div className="info-container">
+            <div className="d-flex info-container">
                 <div className="left-container">
-                    <div className="feels-like-wrapper">
-                        <span>
-                            <i className="fa-solid fa-temperature-half" />
-                            <span>
-                                feels like:&nbsp;{props.feels_like}&deg;
-                            </span>
-                        </span>
+                    <div className="d-flex align-items feels-like-wrapper">
+                        <img src={FeelsLikeIcon} alt="feels like" width="24px" height="24px"/>
+                        <span>feels like:&nbsp;{props.feels_like}&deg;</span>
                     </div>
-                    <div className="min-temp-wrapper">
-                        <i className="fa-solid fa-temperature-low" />
+                    <div className="d-flex align-items min-temp-wrapper">
+                        <img src={MinTempIcon} alt="feels like" width="24px" height="24px"/>
                         <span>min:&nbsp;{props.min_temperature}&deg;</span>
                     </div>
-                    <div className="max-temp-wrapper">
-                        <i className="fa-solid fa-temperature-high" />
+                    <div className="d-flex align-items max-temp-wrapper">
+                        <img src={MaxTempIcon} alt="feels like" width="24px" height="24px"/>
                         <span>max:&nbsp;{props.max_temperature}&deg;</span>
                     </div>
                 </div>
                 <div className="right-container">
                     <div className="city-name-wrapper">{props.city_name}</div>
-                    <div className="day-time-wrapper">
-                        {getCurrentDayAndTime()}
-                    </div>
-                    <div className="description-wrapper">
-                        {props.description}
-                    </div>
+                    <div className="day-time-wrapper">{getCurrentDayAndTime()}</div>
+                    <div className="description-wrapper">{props.description}</div>
                 </div>
             </div>
         </div>
