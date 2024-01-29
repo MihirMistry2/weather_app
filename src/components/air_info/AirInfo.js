@@ -26,7 +26,7 @@ const AirInfo = (props) => {
                 <div className="top-container">
                     <div className="wind-speed-container">
                         <div className="title d-flex">
-                            <img className="icon" src={WindIcon} alt="wind-icon" width="24px" height="24px"/>
+                            <img className="icon" src={WindIcon} alt="wind icon" width="24px" height="24px"/>
                             wind
                         </div>
                         <div className="wrapper">{props.wind}&nbsp;km/h</div>
@@ -34,7 +34,7 @@ const AirInfo = (props) => {
                     <div className="vertical-line"></div>
                     <div className="humidity-container">
                         <div className="title d-flex">
-                            <img className="icon" src={HumidityIcon} alt="humidity-icon" width="24px" height="24px"/>
+                            <img className="icon" src={HumidityIcon} alt="humidity icon" width="24px" height="24px"/>
                             humidity
                         </div>
                         <div className="wrapper">{props.humidity}%</div>
@@ -42,7 +42,7 @@ const AirInfo = (props) => {
                     <div className="vertical-line"></div>
                     <div className="pressure-container">
                         <div className="title d-flex">
-                            <img className="icon" src={PressureIcon} alt="pressure-icon" width="24px" height="24px"/>
+                            <img className="icon" src={PressureIcon} alt="pressure icon" width="24px" height="24px"/>
                             pressure
                         </div>
                         <div className="wrapper">{props.pressure}&nbsp;hPa</div>
@@ -56,7 +56,7 @@ const AirInfo = (props) => {
                 <div className="bottom-container">
                     <div className="sunrise-container">
                         <div className="title d-flex">
-                            <img className="icon" src={SunriseIcon} alt="sunrise-icon" width="22px" height="22px"/>
+                            <img className="icon" src={SunriseIcon} alt="sunrise icon" width="22px" height="22px"/>
                             sunrise
                         </div>
                         <div className="wrapper">{props.sunrise}</div>
@@ -64,7 +64,7 @@ const AirInfo = (props) => {
                     <div className="vertical-line"></div>
                     <div className="sunset-container">
                         <div className="title d-flex">
-                            <img className="icon" src={SunsetIcon} alt="sunset-icon" width="22px" height="22px"/>
+                            <img className="icon" src={SunsetIcon} alt="sunset icon" width="22px" height="22px"/>
                             sunset
                         </div>
                         <div className="wrapper">{props.sunset}</div>
