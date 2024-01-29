@@ -1,7 +1,7 @@
 import CelsiusIcon from '../../../assets/icons/celsius-icon.svg';
 import FeelsLikeIcon from '../../../assets/icons/thermometer-icon.svg';
-import MinTempIcon from '../../../assets/icons/thermometer-minus-icon.svg';
-import MaxTempIcon from '../../../assets/icons/thermometer-plus-icon.svg';
+import MinTempIcon from '../../../assets/icons/thermometer-minus-icon-light.svg';
+import MaxTempIcon from '../../../assets/icons/thermometer-plus-icon-light.svg';
 import './TodaysWeather.css';
 
 /**

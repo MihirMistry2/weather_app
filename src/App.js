@@ -31,6 +31,18 @@ const App = () => {
      * @property {string} icon
      */
     /**
+     * @typedef {Object} FiveDaysForecast
+     * @property {DayForecast} day_name
+     */
+    /**
+     * @typedef {Object} DayForecast
+     * @property {string} day
+     * @property {string} description
+     * @property {string} icon
+     * @property {number} max
+     * @property {number} min
+     */
+    /**
      * @typedef {Object} FormatedDate
      * @property {WeatherDetails} weather_details
      * @property {TodaysForecast[]} todays_details
@@ -44,6 +56,8 @@ const App = () => {
     const [weatherDetails, setWeatherDetails] = useState(null);
     /** @type {[todaysForecast: (TodaysForecast[]|[]), setTodaysForecast: Function]} */
     const [todaysForecast, setTodaysForecast] = useState([]);
+    /** @type {[fiveDaysForecast: (FiveDaysForecast|{}), setFiveDaysForecast: Function]} */
+    const [fiveDaysForecast, setFiveDaysForecast] = useState({});
     const ref = useRef();
 
     /**
@@ -57,12 +71,12 @@ const App = () => {
             hour12: true,
         };
         const getWeatherDetails = () => {
-            let weatherDetailsObj = {};
+            let weather_details = {};
             try {
                 const main = data.list[0].main;
                 const wind = data.list[0].wind;
                 const weather = data.list[0].weather[0];
-                weatherDetailsObj = {
+                weather_details = {
                     city_name: data.city.name,
                     temperature: Math.round(main.temp),
                     min_temperature: Math.round(main.temp_min),
@@ -79,10 +93,11 @@ const App = () => {
             } catch (error) {
                 console.error(error.message);
             }
-            return weatherDetailsObj;
+            return { weather_details };
         };
-        const getTodaysDetails = () => {
-            const todaysDetailsObj = [];
+        const getTodaysAndFiveDaysForecastDetails = () => {
+            const todays_details = [];
+            const five_days_details = {};
             try {
                 for (const obj of data.list) {
                     const currentDate = new Date().toLocaleDateString();
@@ -92,19 +107,39 @@ const App = () => {
                         const time = new Date(obj.dt_txt).toLocaleString('en', dateConfig);
                         const temp = Math.round(obj.main.temp);
                         const icon = `http://openweathermap.org/img/wn/${obj.weather[0].icon}@4x.png`;
-                        todaysDetailsObj.push({ time, temp, icon });
+                        todays_details.push({ time, temp, icon });
+                    } else {
+                        const dateInfo = new Date(obj.dt_txt).toLocaleDateString('en', {
+                            weekday: 'long',
+                            hour: 'numeric',
+                            hour12: true,
+                        });
+                        const dayName = dateInfo.split(',')[0].trim();
+                        const icon = `http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png`;
+                        const description = obj.weather[0].main;
+                        const min = Math.round(obj.main.temp_min);
+                        const max = Math.round(obj.main.temp_max);
+                        if (todays_details.length > 0) {
+                            hours = todays_details[0].time;
+                        }
+                        if (dateInfo.includes(hours)) {
+                            five_days_details[dayName] = { day: dayName, description, icon, min, max };
+                        } else if (!five_days_details[dayName]) {
+                            five_days_details[dayName] = { day: dayName, description, icon, min, max };
+                        }
+                        if (five_days_details.hasOwnProperty(dayName)) {
+                            five_days_details[dayName].min = Math.min(five_days_details[dayName].min, min);
+                            five_days_details[dayName].max = Math.max(five_days_details[dayName].max, min);
+                        }
                     }
                 }
             } catch (error) {
                 console.error(error.message);
             }
-            return todaysDetailsObj;
+            return { todays_details, five_days_details };
         };
 
-        return {
-            weather_details: getWeatherDetails(),
-            todays_details: getTodaysDetails(),
-        };
+        return { ...getWeatherDetails(), ...getTodaysAndFiveDaysForecastDetails()};
     };
     /**
      * Fetch weather information by city name using the OpenWeatherMap API and generate a new URL with latitude and longitude to obtain forecast details.
@@ -145,9 +180,10 @@ const App = () => {
             .then((result) => {
                 try {
                     if (result.cod && Number(result.cod) >= 200 && Number(result.cod) < 300) {
-                        const { weather_details, todays_details } = getFormattedJSON(result);
+                        const { weather_details, todays_details, five_days_details } = getFormattedJSON(result);
                         setWeatherDetails(weather_details);
                         setTodaysForecast(todays_details.splice(0, 3));
+                        setFiveDaysForecast(five_days_details);
                     } else {
                         alert(`Code: ${result.cod}\nMessage: ${result.message}`);
                         ref.current?.updateSearchButtonIconState();
@@ -192,7 +228,7 @@ const App = () => {
                                 <TodaysForecast todaysForecast={todaysForecast} />
                             </div>
                             <div className="forecast-and-air-container">
-                                <FiveDaysForecast />
+                                <FiveDaysForecast fiveDaysForecast={fiveDaysForecast} />
                                 <AirInfo
                                     wind={weatherDetails.wind}
                                     humidity={weatherDetails.humidity}
