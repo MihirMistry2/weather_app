@@ -1,13 +1,13 @@
 import MinTempIcon from '../../assets/icons/thermometer-minus-icon-dark.svg';
 import MaxTempIcon from '../../assets/icons/thermometer-plus-icon-dark.svg';
-import './FiveDaysForecast.css';
+import './FiveDayForecast.css';
 
 /**
  * @typedef {Object} Props
- * @property {FiveDaysForecast} day_name
+ * @property {FiveDayForecast} day_name
  */
 /**
- * @typedef {Object} FiveDaysForecast
+ * @typedef {Object} FiveDayForecast
  * @property {string} day
  * @property {string} description
  * @property {string} icon
@@ -19,12 +19,12 @@ import './FiveDaysForecast.css';
  * @param {Props} props
  * @returns {React.ReactElement} React element that renders a search input with a button.
  */
-const FiveDaysForecast = ({ fiveDaysForecast }) => {
+const FiveDayForecast = ({ fiveDayForecast }) => {
     return (
-        <div className="five-days-forecast-container">
+        <div className="five-day-forecast-container">
             <div className="title">5-day&nbsp;forecast</div>
             <div className="forecast-container">
-                {Object.entries(fiveDaysForecast).map(([key, value], i) => (
+                {Object.entries(fiveDayForecast).map(([key, value], i) => (
                     <div className="info" key={i} id={i}>
                         <div className="day"><span>{value.day}</span></div>
                         <div className="icon">
@@ -52,4 +52,4 @@ const FiveDaysForecast = ({ fiveDaysForecast }) => {
         </div>
     );
 };
-export default FiveDaysForecast;
+export default FiveDayForecast;

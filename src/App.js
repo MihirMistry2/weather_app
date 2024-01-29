@@ -4,7 +4,7 @@ import Search from './components/search/Search';
 import TodaysWeather from './components/todays/weather/TodaysWeather';
 import TodaysForecast from './components/todays/forecast/TodaysForecast';
 import AirInfo from './components/air_info/AirInfo';
-import FiveDaysForecast from './components/five_days_forecast/FiveDaysForecast';
+import FiveDayForecast from './components/five_day_forecast/FiveDayForecast';
 import './App.css';
 
 const FetchFunctionContext = createContext();
@@ -31,7 +31,7 @@ const App = () => {
      * @property {string} icon
      */
     /**
-     * @typedef {Object} FiveDaysForecast
+     * @typedef {Object} FiveDayForecast
      * @property {DayForecast} day_name
      */
     /**
@@ -56,8 +56,8 @@ const App = () => {
     const [weatherDetails, setWeatherDetails] = useState(null);
     /** @type {[todaysForecast: (TodaysForecast[]|[]), setTodaysForecast: Function]} */
     const [todaysForecast, setTodaysForecast] = useState([]);
-    /** @type {[fiveDaysForecast: (FiveDaysForecast|{}), setFiveDaysForecast: Function]} */
-    const [fiveDaysForecast, setFiveDaysForecast] = useState({});
+    /** @type {[fiveDayForecast: (FiveDayForecast|{}), setFiveDayForecast: Function]} */
+    const [fiveDayForecast, setFiveDayForecast] = useState({});
     const ref = useRef();
 
     /**
@@ -95,9 +95,9 @@ const App = () => {
             }
             return { weather_details };
         };
-        const getTodaysAndFiveDaysForecastDetails = () => {
+        const getTodaysAndFiveDayForecastDetails = () => {
             const todays_details = [];
-            const five_days_details = {};
+            const five_day_details = {};
             try {
                 for (const obj of data.list) {
                     const currentDate = new Date().toLocaleDateString();
@@ -123,23 +123,23 @@ const App = () => {
                             hours = todays_details[0].time;
                         }
                         if (dateInfo.includes(hours)) {
-                            five_days_details[dayName] = { day: dayName, description, icon, min, max };
-                        } else if (!five_days_details[dayName]) {
-                            five_days_details[dayName] = { day: dayName, description, icon, min, max };
+                            five_day_details[dayName] = { day: dayName, description, icon, min, max };
+                        } else if (!five_day_details[dayName]) {
+                            five_day_details[dayName] = { day: dayName, description, icon, min, max };
                         }
-                        if (five_days_details.hasOwnProperty(dayName)) {
-                            five_days_details[dayName].min = Math.min(five_days_details[dayName].min, min);
-                            five_days_details[dayName].max = Math.max(five_days_details[dayName].max, min);
+                        if (five_day_details.hasOwnProperty(dayName)) {
+                            five_day_details[dayName].min = Math.min(five_day_details[dayName].min, min);
+                            five_day_details[dayName].max = Math.max(five_day_details[dayName].max, min);
                         }
                     }
                 }
             } catch (error) {
                 console.error(error.message);
             }
-            return { todays_details, five_days_details };
+            return { todays_details, five_day_details };
         };
 
-        return { ...getWeatherDetails(), ...getTodaysAndFiveDaysForecastDetails()};
+        return { ...getWeatherDetails(), ...getTodaysAndFiveDayForecastDetails()};
     };
     /**
      * Fetch weather information by city name using the OpenWeatherMap API and generate a new URL with latitude and longitude to obtain forecast details.
@@ -180,10 +180,10 @@ const App = () => {
             .then((result) => {
                 try {
                     if (result.cod && Number(result.cod) >= 200 && Number(result.cod) < 300) {
-                        const { weather_details, todays_details, five_days_details } = getFormattedJSON(result);
+                        const { weather_details, todays_details, five_day_details } = getFormattedJSON(result);
                         setWeatherDetails(weather_details);
                         setTodaysForecast(todays_details.splice(0, 3));
-                        setFiveDaysForecast(five_days_details);
+                        setFiveDayForecast(five_day_details);
                     } else {
                         alert(`Code: ${result.cod}\nMessage: ${result.message}`);
                         ref.current?.updateSearchButtonIconState();
@@ -228,7 +228,7 @@ const App = () => {
                                 <TodaysForecast todaysForecast={todaysForecast} />
                             </div>
                             <div className="forecast-and-air-container">
-                                <FiveDaysForecast fiveDaysForecast={fiveDaysForecast} />
+                                <FiveDayForecast fiveDayForecast={fiveDayForecast} />
                                 <AirInfo
                                     wind={weatherDetails.wind}
                                     humidity={weatherDetails.humidity}
