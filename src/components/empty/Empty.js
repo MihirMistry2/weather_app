@@ -2,6 +2,11 @@ import Search from '../search/Search';
 import LogoImg from '../../assets/images/logo.png';
 import './Empty.css';
 
+/**
+ * This component renders a empty screen with search engine.
+ * @param {Props} props
+ * @returns {React.ReactElement} React element that renders a search input with a button.
+ */
 export const Empty = ({ forwardedRef }) => {
     return (
         <div className="empty-screen-container">

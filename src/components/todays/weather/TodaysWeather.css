@@ -1,6 +1,6 @@
 .todays-weather-temp-container {
     margin: 16px;
-    height: calc(54% - 16px);
+    height: calc(54% - 13px);
     padding: 0px 22px;
     max-height: 380px;
     & .title {

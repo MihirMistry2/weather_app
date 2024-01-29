@@ -50,9 +50,8 @@
                 border-radius: 16px;
                 margin: 0px;
                 text-transform: capitalize;
-                & .fa-solid,
-                & .fa-regular {
-                    margin-right: 8px;
+                & .icon {
+                    margin-right: 6px;
                 }
             }
             & .wrapper {

@@ -11,20 +11,41 @@
     display: flex;
     flex-direction: column;
 }
-.main-container {
+& .vertical-line,
+& .horizontal-line {
+    border-radius: 2px;
+    background-color: #35455e;
+}
+& .vertical-line {
+    height: 60%;
+    width: 1px;
+    margin: auto 0px;
+}
+& .horizontal-line {
+    width: 65%;
+    height: 1px;
+    margin: 0px auto;
+}
+.main-wrapper {
+    width: 100vw;
+    height: 100vh;
     background-color: #0b131e;
-    width: calc(100vw - 36px);
-    height: calc(100vh - 36px);
-    color: #fff;
-    padding: 18px;
-    & .current-weather-info-container {
-        width: 40%;
-        height: 100%;
-        overflow: auto;
-    }
-    & .forecast-and-air-container {
-        width: 60%;
-        height: 100%;
-        overflow: auto;
+    & .main-container {
+        height: -webkit-fill-available;
+        width: -webkit-fill-available;
+        max-height: 708px;
+        max-width: 1528px;
+        color: #fff;
+        padding: 18px;
+        & .current-weather-info-container {
+            width: 40%;
+            height: 100%;
+            overflow: hidden;
+        }
+        & .forecast-and-air-container {
+            width: 60%;
+            height: 100%;
+            overflow: auto;
+        }
     }
 }

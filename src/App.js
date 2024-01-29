@@ -173,32 +173,40 @@ const App = () => {
     }, []);
 
     return (
-        <div className="main-container d-flex align-items justify-content">
-            <FetchFunctionContext.Provider value={{ fetchWeatherDetails, fetchForecastDetails }}>
-                {weatherDetails ? (
-                    <>
-                        <div className="current-weather-info-container">
-                            <Search ref={ref} />
-                            <TodaysWeather
-                                icon={weatherDetails.icon}
-                                temperature={weatherDetails.temperature}
-                                feels_like={weatherDetails.feels_like}
-                                min_temperature={weatherDetails.min_temperature}
-                                max_temperature={weatherDetails.max_temperature}
-                                city_name={weatherDetails.city_name}
-                                description={weatherDetails.description}
-                            />
-                            <TodaysForecast todaysForecast={todaysForecast} />
-                        </div>
-                        <div className="forecast-and-air-container">
-                            <FiveDaysForecast />
-                            <AirInfo />
-                        </div>
-                    </>
-                ) : (
-                    <Empty forwardedRef={ref} />
-                )}
-            </FetchFunctionContext.Provider>
+        <div className="main-wrapper d-flex align-items justify-content">
+            <div className="main-container d-flex align-items justify-content">
+                <FetchFunctionContext.Provider value={{ fetchWeatherDetails, fetchForecastDetails }}>
+                    {weatherDetails ? (
+                        <>
+                            <div className="current-weather-info-container">
+                                <Search ref={ref} />
+                                <TodaysWeather
+                                    icon={weatherDetails.icon}
+                                    temperature={weatherDetails.temperature}
+                                    feels_like={weatherDetails.feels_like}
+                                    min_temperature={weatherDetails.min_temperature}
+                                    max_temperature={weatherDetails.max_temperature}
+                                    city_name={weatherDetails.city_name}
+                                    description={weatherDetails.description}
+                                />
+                                <TodaysForecast todaysForecast={todaysForecast} />
+                            </div>
+                            <div className="forecast-and-air-container">
+                                <FiveDaysForecast />
+                                <AirInfo
+                                    wind={weatherDetails.wind}
+                                    humidity={weatherDetails.humidity}
+                                    pressure={weatherDetails.pressure}
+                                    sunrise={weatherDetails.sunrise}
+                                    sunset={weatherDetails.sunset}
+                                />
+                            </div>
+                        </>
+                    ) : (
+                        <Empty forwardedRef={ref} />
+                    )}
+                </FetchFunctionContext.Provider>
+            </div>
         </div>
     );
 };
