@@ -14,7 +14,7 @@ The app is developed using **React.js**
 
 -   Make sure you already have `Node.js` and `npm` installed in your system.
 -   You need an API key from [OpenWeatherMap](https://openweathermap.org/). After creating an account, [grab your key](https://home.openweathermap.org/api_keys).
--   Then, under the `src` directory, create an `.env` file with the key `REACT_APP_OPENWEATHERMAP_KEY` and assign a value with your OpenWeatherMap API key. (You can refer to the `.env.sample` file)
+-   Then, under the `src` directory, create an `.env` file with the key `REACT_APP_OPENWEATHERMAP_KEY` and assign value with your OpenWeatherMap API key. (You can refer to the `.env.sample` file)
     <br>
     <br>
 
