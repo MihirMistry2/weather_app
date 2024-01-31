@@ -25,6 +25,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/MihirMistry2/weather_app.git
 ```
+- Install the packages using the command `npm i`
 
 <br>
 
