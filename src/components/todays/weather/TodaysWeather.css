@@ -71,4 +71,80 @@
             }
         }
     }
+    @media only screen and (width <= 640px) {
+        max-height: unset;
+        height: auto;
+    }
+    @media only screen and (width <= 540px) {
+        .title {
+            font-size: 26px;
+        }
+        .temp-and-icon-container {
+            & .icon-wrapper {
+                img {
+                    height: 160px;
+                    width: 160px;
+                }
+            }
+            & .temperature-wrapper {
+                font-size: 82px;
+            }
+        }
+        .info-container {
+            & .left-container {
+                img {
+                    width: 22px;
+                    height: 22px;
+                }
+                span {
+                    font-size: 16px;
+                }
+            }
+            & .right-container {
+                & .city-name-wrapper {
+                    font-size: 22px;
+                }
+                & .day-time-wrapper,
+                & .description-wrapper {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    @media only screen and (width >= 960px) and (width <= 1280px) and (orientation: landscape) {
+        .title {
+            font-size: 26px;
+        }
+        .temp-and-icon-container {
+            & .icon-wrapper {
+                img {
+                    height: 160px;
+                    width: 160px;
+                }
+            }
+            & .temperature-wrapper {
+                font-size: 82px;
+            }
+        }
+        .info-container {
+            & .left-container {
+                img {
+                    width: 22px;
+                    height: 22px;
+                }
+                span {
+                    font-size: 16px;
+                }
+            }
+            & .right-container {
+                & .city-name-wrapper {
+                    font-size: 22px;
+                }
+                & .day-time-wrapper,
+                & .description-wrapper {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
 }

@@ -7,12 +7,15 @@
     padding: 22px 22px 6px 22px;
     height: calc(40% - 60px);
     max-height: 250px;
+    overflow-x: auto;
     & .title {
         text-transform: uppercase;
         color: #9399a2ff;
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 16px;
+        position: sticky;
+        left: 0px;
     }
     & .info-container {
         height: calc(100% - 56px);
@@ -25,6 +28,7 @@
         & .middle-container {
             display: flex;
             height: 1px;
+            margin: 6px 0px;
             & .wrapper {
                 width: 33%;
             }
@@ -50,12 +54,93 @@
                 border-radius: 16px;
                 margin: 0px;
                 text-transform: capitalize;
+                position: relative;
                 & .icon {
                     margin-right: 6px;
                 }
             }
             & .wrapper {
                 text-transform: none;
+            }
+        }
+    }
+    @media only screen and (width <= 720px) {
+        height: auto;
+        max-height: unset;
+    }
+    @media only screen and (width <= 1080px) {
+        .info-container {
+            & .wind-speed-container,
+            & .humidity-container,
+            & .pressure-container,
+            & .sunrise-container,
+            & .sunset-container {
+                flex-direction: column;
+                height: auto;
+                & .title {
+                    margin-bottom: 4px;
+                }
+            }
+        }
+    }
+    @media only screen and (width <= 540px) {
+        .title {
+            font-size: 16px;
+        }
+        .info-container {
+            min-width: 460px;
+            & .sunrise-container,
+            & .sunset-container {
+                & .title {
+                    & .icon {
+                        height: 18px;
+                        width: 18px;
+                    }
+                }
+            }
+            & .top-container,
+            & .bottom-container {
+                & .title {
+                    font-size: 14px;
+                    & .icon {
+                        height: 20px;
+                        width: 20px;
+                        margin-right: 4px;
+                    }
+                    & .wrapper {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (width >= 960px) and (width <= 1280px) and (orientation: landscape) {
+        .title {
+            font-size: 16px;
+        }
+        .info-container {
+            & .sunrise-container,
+            & .sunset-container {
+                & .title {
+                    & .icon {
+                        height: 18px;
+                        width: 18px;
+                    }
+                }
+            }
+            & .top-container,
+            & .bottom-container {
+                & .title {
+                    font-size: 14px;
+                    & .icon {
+                        height: 20px;
+                        width: 20px;
+                        margin-right: 4px;
+                    }
+                    & .wrapper {
+                        font-size: 16px;
+                    }
+                }
             }
         }
     }

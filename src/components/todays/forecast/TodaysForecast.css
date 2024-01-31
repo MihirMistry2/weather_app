@@ -6,12 +6,15 @@
     height: calc(36% - 72px);
     padding: 22px;
     max-height: 214px;
+    overflow-x: auto;
     & .title {
         text-transform: uppercase;
         color: #9399a2ff;
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 16px;
+        position: sticky;
+        left: 0px;
     }
     & .forecast-container {
         display: flex;
@@ -53,6 +56,50 @@
                 text-transform: uppercase;
                 font-size: 18px;
                 font-weight: 600;
+            }
+        }
+    }
+    @media only screen and (width < 960px) {
+        height: auto;
+    }
+    @media only screen and (width <= 540px) {
+        overflow-y: auto;
+        height: auto;
+        .title {
+            font-size: 16px;
+        }
+        .forecast-container {
+            min-width: 380px;
+            & .info {
+                & .time-wrapper,
+                & .temp-wrapper {
+                    font-size: 16px;
+                }
+                & .icon-wrapper {
+                    img {
+                        height: 82px;
+                        width: 82px;
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (width >= 960px) and (width <= 1280px) and (orientation: landscape) {
+        .title {
+            font-size: 16px;
+        }
+        .forecast-container {
+            & .info {
+                & .time-wrapper,
+                & .temp-wrapper {
+                    font-size: 16px;
+                }
+                & .icon-wrapper {
+                    img {
+                        height: 82px;
+                        width: 82px;
+                    }
+                }
             }
         }
     }

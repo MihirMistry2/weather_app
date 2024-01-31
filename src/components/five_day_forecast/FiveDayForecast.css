@@ -7,14 +7,18 @@
     box-shadow: #00000014 0px 0px 0px;
     padding: 22px 22px 6px 22px;
     max-height: 390px;
+    overflow: auto;
     & .title {
         text-transform: uppercase;
         color: #9399a2ff;
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 16px;
+        position: sticky;
+        left: 0px;
     }
     & .forecast-container {
+        min-width: 468px;
         & .info {
             display: grid;
             grid-template-columns: calc(40% - 30px) 10% 20% 30%;
@@ -70,6 +74,67 @@
             }
             &:last-child {
                 border-bottom: none !important;
+            }
+        }
+    }
+    @media only screen and (width <= 960px) {
+        height: auto;
+    }
+    @media only screen and (width <= 540px) {
+        .title {
+            font-size: 16px;
+        }
+        .forecast-container {
+            & .info {
+                & .day,
+                & .description {
+                    font-size: 16px;
+                }
+                & .icon {
+                    img {
+                        width: 56px px;
+                        height: 56px;
+                    }
+                }
+                & .temp {
+                    & .max,
+                    & .min {
+                        font-size: 16px;
+                        img {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (width >= 960px) and (width <= 1280px) and (orientation: landscape) {
+        .title {
+            font-size: 16px;
+        }
+        .forecast-container {
+            & .info {
+                & .day,
+                & .description {
+                    font-size: 16px;
+                }
+                & .icon {
+                    img {
+                        width: 56px px;
+                        height: 56px;
+                    }
+                }
+                & .temp {
+                    & .max,
+                    & .min {
+                        font-size: 16px;
+                        img {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
             }
         }
     }
