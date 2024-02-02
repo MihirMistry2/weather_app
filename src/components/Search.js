@@ -1,9 +1,9 @@
 import { forwardRef, useContext, useImperativeHandle, useState } from 'react';
-import { FetchFunctionContext } from '../../App';
-import SearchIcon from '../../assets/icons/search-icon.svg';
-import LoaderIcon from '../../assets/icons/loader-icon.svg';
-import SeachIcon from '../../assets/icons/search-icon.svg';
-import './Search.css';
+import { FetchFunctionContext } from '../App';
+import SearchIcon from '../assets/icons/search-icon.svg';
+import LoaderIcon from '../assets/icons/loader-icon.svg';
+import SeachIcon from '../assets/icons/search-icon.svg';
+import '../sass/Search.scss';
 
 /**
  * This component renders a search engine.
@@ -85,7 +85,7 @@ const Search = (props, ref) => {
         <div className="search-container">
             <input type="search" name="search" id="search" placeholder="Search..." value={search} onChange={onSearchChange}/>
             <button className="search-btn" onClick={onSearchButtonClick}>
-                <img id="search-icon" className="search-icon" src={SearchIcon} alt="search icon" width="30px" height="30px"/>
+                <img id="search-icon" className="search-icon" src={SearchIcon} alt="search icon" width="30px" height="30px" />
             </button>
         </div>
     );

@@ -1,6 +1,6 @@
-import Search from '../search/Search';
-import LogoImg from '../../assets/images/logo.png';
-import './Empty.css';
+import Search from './Search';
+import LogoImg from '../assets/images/logo.png';
+import '../sass/Empty.scss';
 
 /**
  * This component renders a empty screen with search engine.
@@ -12,12 +12,8 @@ export const Empty = ({ forwardedRef }) => {
         <div className="empty-screen-container">
             <Search ref={forwardedRef} />
             <div className="logo-container d-flex-column align-items justify-content">
-                <div className="logo-wrapper">
-                    <img id="logo-img" className="logo-img" src={LogoImg} alt="logo img" width="200px" height="200px"/>
-                </div>
-                <div className="msg-wrapper">
-                    allow location access or search via city name.
-                </div>
+                <div className="logo-wrapper"><img id="logo-img" className="logo-img" src={LogoImg} alt="logo img" width="200px" height="200px"/></div>
+                <div className="msg-wrapper">allow location access or search via city name.</div>
             </div>
         </div>
     );

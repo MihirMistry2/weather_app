@@ -1,9 +1,9 @@
-import WindIcon from '../../assets/icons/wind-icon.svg';
-import HumidityIcon from '../../assets/icons/humidity-icon.svg';
-import PressureIcon from '../../assets/icons/speed-up-icon.svg';
-import SunsetIcon from '../../assets/icons/sunset-icon.svg';
-import SunriseIcon from '../../assets/icons/sunrise-icon.svg';
-import './AirInfo.css';
+import WindIcon from '../assets/icons/wind-icon.svg';
+import HumidityIcon from '../assets/icons/humidity-icon.svg';
+import PressureIcon from '../assets/icons/speed-up-icon.svg';
+import SunsetIcon from '../assets/icons/sunset-icon.svg';
+import SunriseIcon from '../assets/icons/sunrise-icon.svg';
+import '../sass/AirInfo.scss';
 
 /**
  * @typedef {Object} Props

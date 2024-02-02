@@ -1,6 +1,6 @@
-import MinTempIcon from '../../assets/icons/thermometer-minus-icon-dark.svg';
-import MaxTempIcon from '../../assets/icons/thermometer-plus-icon-dark.svg';
-import './FiveDayForecast.css';
+import MinTempIcon from '../assets/icons/thermometer-minus-icon-dark.svg';
+import MaxTempIcon from '../assets/icons/thermometer-plus-icon-dark.svg';
+import '../sass/FiveDayForecast.scss';
 
 /**
  * @typedef {Object} Props
@@ -27,9 +27,7 @@ const FiveDayForecast = ({ fiveDayForecast }) => {
                 {Object.entries(fiveDayForecast).map(([key, value], i) => (
                     <div className="info" key={i} id={i}>
                         <div className="day"><span>{value.day}</span></div>
-                        <div className="icon">
-                            <img src={value.icon} width="60px" alt="weather icon" height="60px"/>
-                        </div>
+                        <div className="icon"><img src={value.icon} width="60px" alt="weather icon" height="60px"/></div>
                         <div className="description">{value.description}</div>
                         <div className="temp">
                             <div className="temp-wrapper d-flex">

@@ -1,8 +1,8 @@
-import CelsiusIcon from '../../../assets/icons/celsius-icon.svg';
-import FeelsLikeIcon from '../../../assets/icons/thermometer-icon.svg';
-import MinTempIcon from '../../../assets/icons/thermometer-minus-icon-light.svg';
-import MaxTempIcon from '../../../assets/icons/thermometer-plus-icon-light.svg';
-import './TodaysWeather.css';
+import CelsiusIcon from '../assets/icons/celsius-icon.svg';
+import FeelsLikeIcon from '../assets/icons/thermometer-icon.svg';
+import MinTempIcon from '../assets/icons/thermometer-minus-icon-light.svg';
+import MaxTempIcon from '../assets/icons/thermometer-plus-icon-light.svg';
+import '../sass/TodaysWeather.scss';
 
 /**
  * @typedef {Object} Props
@@ -34,10 +34,10 @@ const TodaysWeather = (props) => {
 
     return (
         <div className="todays-weather-temp-container">
-            <div className="d-flex title">weather (<img className='celsius-icon' src={CelsiusIcon} alt="celsius icon" width="30px" height="30px"/>)</div>
+            <div className="d-flex title">weather (<img className="celsius-icon" src={CelsiusIcon} alt="celsius icon" width="30px" height="30px"/>)</div>
             <div className="d-flex align-items justify-content temp-and-icon-container">
                 <div className="d-flex align-items justify-content icon-wrapper">
-                    <img src={props.icon} alt='weather icon' width="200px" height="200px" />
+                    <img src={props.icon} alt="weather icon" width="200px" height="200px"/>
                 </div>
                 <div className="d-flex align-items justify-content temperature-wrapper">{props.temperature}&deg;</div>
             </div>

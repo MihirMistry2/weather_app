@@ -1,11 +1,11 @@
 import { createContext, useEffect, useRef, useState } from 'react';
-import Empty from './components/empty/Empty';
-import Search from './components/search/Search';
-import TodaysWeather from './components/todays/weather/TodaysWeather';
-import TodaysForecast from './components/todays/forecast/TodaysForecast';
-import AirInfo from './components/air_info/AirInfo';
-import FiveDayForecast from './components/five_day_forecast/FiveDayForecast';
-import './App.css';
+import Empty from './components/Empty';
+import Search from './components/Search';
+import TodaysWeather from './components/TodaysWeather';
+import TodaysForecast from './components/TodaysForecast';
+import AirInfo from './components/AirInfo';
+import FiveDayForecast from './components/FiveDayForecast';
+import './sass/App.scss';
 
 const FetchFunctionContext = createContext();
 const App = () => {
@@ -139,7 +139,7 @@ const App = () => {
             return { todays_details, five_day_details };
         };
 
-        return { ...getWeatherDetails(), ...getTodaysAndFiveDayForecastDetails()};
+        return { ...getWeatherDetails(), ...getTodaysAndFiveDayForecastDetails() };
     };
     /**
      * Fetch weather information by city name using the OpenWeatherMap API and generate a new URL with latitude and longitude to obtain forecast details.
