@@ -1,0 +1,64 @@
+@import '../sass/Variables.scss';
+
+.todays-forecast-container {
+    margin: 16px;
+    border-radius: 16px;
+    background-color: $secondary-color;
+    box-shadow: #00000014 0px 0px 0px;
+    height: calc(36% - 72px);
+    padding: 22px;
+    max-height: 214px;
+    overflow-x: auto;
+    .title {
+        text-transform: uppercase;
+        color: $secondary-font-color;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        position: sticky;
+        left: 0px;
+    }
+    .forecast-container {
+        display: flex;
+        .info {
+            width: 33%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-right: 1px solid $tag-color;
+            border-radius: 2px;
+            &:last-child {
+                border-right: none !important;
+            }
+            .time-wrapper {
+                text-transform: uppercase;
+                font-size: 18px;
+                font-weight: 600;
+                width: fit-content;
+                padding: 4px 12px;
+                border-radius: 16px;
+                color: $secondary-color;
+                background-color: $primary-font-color;
+            }
+            .icon-wrapper {
+                width: 76px;
+                height: 76px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                > img {
+                    transform: scale(1.2);
+                }
+            }
+            .temp-wrapper {
+                color: $tertiary-font-color;
+                text-transform: uppercase;
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+    }
+}

@@ -1,0 +1,337 @@
+@import '../sass/Variables.scss';
+
+@media only screen {
+    @media (width <= 1080px) {
+        .main-wrapper {
+            .main-container {
+                @media (width <= 960px) {
+                    flex-direction: column;
+                    max-height: unset;
+                    overflow: auto;
+                    justify-content: unset;
+                    @media (width <= 845px) {
+                        @media (width <= 745px) {
+                            @media (width < 690px) {
+                                @media (width < 480px) {
+                                    padding: 0px;
+                                }
+                                @media (width >= 480px) {
+                                    width: 100%;
+                                    border: none;
+                                    border-radius: 0px;
+                                }
+                            }
+                            @media (width >= 690px) {
+                                width: calc(100% - 140px);
+                            }
+                        }
+                        @media (width > 745px) {
+                            width: calc(100% - 160px);
+                        }
+                    }
+                    .current-weather-info-container {
+                        overflow: visible;
+                        width: 100%;
+                        height: auto;
+                        .todays-weather-temp-container {
+                            @media (width <= 640px) {
+                                max-height: unset;
+                                height: auto;
+                                @media (width <= 540px) {
+                                    .title {
+                                        font-size: 26px;
+                                    }
+                                    .temp-and-icon-container {
+                                        .icon-wrapper {
+                                            > img {
+                                                height: 160px;
+                                                width: 160px;
+                                            }
+                                        }
+                                        .temperature-wrapper {
+                                            font-size: 82px;
+                                        }
+                                    }
+                                    .info-container {
+                                        .left-container {
+                                            > img {
+                                                width: 22px;
+                                                height: 22px;
+                                            }
+                                            > span {
+                                                font-size: 16px;
+                                            }
+                                        }
+                                        .right-container {
+                                            .city-name-wrapper {
+                                                font-size: 22px;
+                                            }
+                                            .day-time-wrapper,
+                                            .description-wrapper {
+                                                font-size: 16px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .todays-forecast-container {
+                            height: auto;
+                            @media (width <= 540px) {
+                                overflow-y: auto;
+                                height: auto;
+                                .title {
+                                    font-size: 16px;
+                                }
+                                .forecast-container {
+                                    min-width: 380px;
+                                    .info {
+                                        .time-wrapper,
+                                        .temp-wrapper {
+                                            font-size: 16px;
+                                        }
+                                        .icon-wrapper {
+                                            > img {
+                                                height: 82px;
+                                                width: 82px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .forecast-and-air-container {
+                        width: 100%;
+                        height: 100%;
+                        overflow: visible;
+                        .five-day-forecast-container {
+                            height: auto;
+                            @media (width <= 540px) {
+                                .title {
+                                    font-size: 16px;
+                                }
+                                .forecast-container {
+                                    .info {
+                                        .day,
+                                        .description {
+                                            font-size: 16px;
+                                        }
+                                        .icon {
+                                            > img {
+                                                width: 56px px;
+                                                height: 56px;
+                                            }
+                                        }
+                                        .temp {
+                                            .max,
+                                            .min {
+                                                font-size: 16px;
+                                                > img {
+                                                    width: 20px;
+                                                    height: 20px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .air-info-container {
+                            @media (width <= 720px) {
+                                height: auto;
+                                max-height: unset;
+                                @media (width <= 540px) {
+                                    .title {
+                                        font-size: 16px;
+                                    }
+                                    .info-container {
+                                        min-width: 460px;
+                                        .sunrise-container,
+                                        .sunset-container {
+                                            .title {
+                                                .icon {
+                                                    height: 18px;
+                                                    width: 18px;
+                                                }
+                                            }
+                                        }
+                                        .top-container,
+                                        .bottom-container {
+                                            .title {
+                                                font-size: 14px;
+                                                .icon {
+                                                    height: 20px;
+                                                    width: 20px;
+                                                    margin-right: 4px;
+                                                }
+                                                .wrapper {
+                                                    font-size: 16px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    @media (width > 845px) {
+                        width: calc(100% - 220px);
+                    }
+                    @media (width > 690px) {
+                        height: calc(100% - 140px);
+                        border: 1px solid $tag-color;
+                        border-radius: 16px;
+                    }
+                }
+            }
+        }
+        .forecast-and-air-container {
+            .air-info-container {
+                .info-container {
+                    .wind-speed-container,
+                    .humidity-container,
+                    .pressure-container,
+                    .sunrise-container,
+                    .sunset-container {
+                        flex-direction: column;
+                        height: auto;
+                        .title {
+                            margin-bottom: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (orientation: landscape) {
+        .main-wrapper {
+            .main-container {
+                @media (width >= 1680px) and (height >= 840px) {
+                    border: 1px solid $tag-color;
+                    border-radius: 16px;
+                }
+                @media (width >= 960px) and (width <= 1280px) {
+                    .current-weather-info-container {
+                        .todays-weather-temp-container {
+                            .title {
+                                font-size: 26px;
+                            }
+                            .temp-and-icon-container {
+                                .icon-wrapper {
+                                    > img {
+                                        height: 160px;
+                                        width: 160px;
+                                    }
+                                }
+                                .temperature-wrapper {
+                                    font-size: 82px;
+                                }
+                            }
+                            .info-container {
+                                .left-container {
+                                    > img {
+                                        width: 22px;
+                                        height: 22px;
+                                    }
+                                    > span {
+                                        font-size: 16px;
+                                    }
+                                }
+                                .right-container {
+                                    .city-name-wrapper {
+                                        font-size: 22px;
+                                    }
+                                    .day-time-wrapper,
+                                    .description-wrapper {
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+                        .todays-forecast-container {
+                            .title {
+                                font-size: 16px;
+                            }
+                            .forecast-container {
+                                .info {
+                                    .time-wrapper,
+                                    .temp-wrapper {
+                                        font-size: 16px;
+                                    }
+                                    .icon-wrapper {
+                                        > img {
+                                            height: 82px;
+                                            width: 82px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .forecast-and-air-container {
+                        .five-day-forecast-container {
+                            .title {
+                                font-size: 16px;
+                            }
+                            .forecast-container {
+                                .info {
+                                    .day,
+                                    .description {
+                                        font-size: 16px;
+                                    }
+                                    .icon {
+                                        > img {
+                                            width: 56px px;
+                                            height: 56px;
+                                        }
+                                    }
+                                    .temp {
+                                        .max,
+                                        .min {
+                                            font-size: 16px;
+                                            > img {
+                                                width: 20px;
+                                                height: 20px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .air-info-container {
+                            .title {
+                                font-size: 16px;
+                            }
+                            .info-container {
+                                .sunrise-container,
+                                .sunset-container {
+                                    .title {
+                                        .icon {
+                                            height: 18px;
+                                            width: 18px;
+                                        }
+                                    }
+                                }
+                                .top-container,
+                                .bottom-container {
+                                    .title {
+                                        font-size: 14px;
+                                        .icon {
+                                            height: 20px;
+                                            width: 20px;
+                                            margin-right: 4px;
+                                        }
+                                        .wrapper {
+                                            font-size: 16px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

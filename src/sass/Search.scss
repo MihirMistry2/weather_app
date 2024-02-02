@@ -1,3 +1,5 @@
+@import '../sass/Variables.scss';
+
 @keyframes rotate {
     to {
         transform: rotate(360deg);
@@ -7,10 +9,10 @@
     margin: 16px;
     height: 46px;
     display: flex;
-    & input {
-        background-color: #202b3b;
+    input {
+        background-color: $secondary-color;
         box-shadow: #00000014 0px 0px 0px;
-        color: #dde0e4ff;
+        color: $primary-font-color;
         border-radius: 16px;
         border: none;
         height: 46px;
@@ -20,41 +22,41 @@
         font-size: 18px;
         outline: none;
         &.error {
-            background-color: #fa5c43;
-            color: #0b131e;
+            background-color: $red;
+            color: $primary-color;
             &::-webkit-input-placeholder {
-                color: #0b131e;
+                color: $primary-color;
             }
             &::-webkit-search-cancel-button {
-                background-image: url('../../assets/icons/close-dark-icon.svg');
+                background-image: url('../assets/icons/close-dark-icon.svg');
             }
         }
         &::-webkit-input-placeholder {
-            color: #9399a2ff;
+            color: $secondary-font-color;
         }
         &::-webkit-search-cancel-button {
             -webkit-appearance: none;
             height: 24px;
             width: 24px;
-            background-image: url('../../assets/icons/close-light-icon.svg');
+            background-image: url('../assets/icons/close-light-icon.svg');
             background-repeat: no-repeat;
             cursor: pointer;
         }
     }
-    & button {
+    button {
         padding: 8px;
         border-radius: 16px;
         border: none;
         cursor: pointer;
         font-size: 20px;
-        color: #202b3b;
-        background-color: #dde0e4ff;
+        color: $secondary-color;
+        background-color: $primary-font-color;
         box-shadow: #00000014 0px 0px 0px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        & .search-icon {
+        .search-icon {
             &.rotate {
                 animation: rotate 1.5s linear infinite;
             }
