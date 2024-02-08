@@ -1,9 +1,9 @@
 import { forwardRef, useContext, useImperativeHandle, useState } from 'react';
-import { FetchFunctionContext } from '../App';
-import SearchIcon from '../assets/icons/search-icon.svg';
-import LoaderIcon from '../assets/icons/loader-icon.svg';
-import SeachIcon from '../assets/icons/search-icon.svg';
-import '../sass/Search.scss';
+import { FetchFunctionContext } from '../../App';
+import SearchIcon from '../../assets/icons/search-icon.svg';
+import LoaderIcon from '../../assets/icons/loader-icon.svg';
+import SeachIcon from '../../assets/icons/search-icon.svg';
+import '../../sass/Search.scss';
 
 /**
  * This component renders a search engine.
@@ -59,7 +59,9 @@ const Search = (props, ref) => {
      */
     const onSearchChange = (e) => {
         const value = e.target.value;
-        const $input = document.querySelector('.main-container .search-container #search');
+        const $input = document.querySelector(
+            '.main-container .search-container #search'
+        );
         $input.classList.remove('error');
         setSearch(value);
     };
@@ -77,15 +79,33 @@ const Search = (props, ref) => {
         }
     };
 
-    useImperativeHandle(ref, () => {
-        return { getSearchValue, updateSearchButtonIconState };
-    }, []);
+    useImperativeHandle(
+        ref,
+        () => {
+            return { getSearchValue, updateSearchButtonIconState };
+        },
+        []
+    );
 
     return (
         <div className="search-container">
-            <input type="search" name="search" id="search" placeholder="Search..." value={search} onChange={onSearchChange}/>
+            <input
+                type="search"
+                name="search"
+                id="search"
+                placeholder="Search..."
+                value={search}
+                onChange={onSearchChange}
+            />
             <button className="search-btn" onClick={onSearchButtonClick}>
-                <img id="search-icon" className="search-icon" src={SearchIcon} alt="search icon" width="30px" height="30px" />
+                <img
+                    id="search-icon"
+                    className="search-icon"
+                    src={SearchIcon}
+                    alt="search icon"
+                    width="30px"
+                    height="30px"
+                />
             </button>
         </div>
     );
