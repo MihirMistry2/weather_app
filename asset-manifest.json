@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/weather_app/static/css/main.dd1b210f.css",
+    "main.js": "/weather_app/static/js/main.fa14ea9c.js",
+    "static/media/logo.png": "/weather_app/static/media/logo.a5f0952e121ddbbbf9a9.png",
+    "static/media/humidity-icon.svg": "/weather_app/static/media/humidity-icon.46900265e79486620c2c2b781843c1b6.svg",
+    "static/media/loader-icon.svg": "/weather_app/static/media/loader-icon.7ce886e6f95c80266e8f2ad3f0b5374b.svg",
+    "index.html": "/weather_app/index.html",
+    "static/media/sunrise-icon.svg": "/weather_app/static/media/sunrise-icon.8aef7256c88d2b8c623b1deafc359d3e.svg",
+    "static/media/sunset-icon.svg": "/weather_app/static/media/sunset-icon.9af16c7a3a8daab98fed70ea316101a6.svg",
+    "static/media/thermometer-plus-icon-light.svg": "/weather_app/static/media/thermometer-plus-icon-light.8ecd9207b7b9d62e617fdd2e2a4ce13b.svg",
+    "static/media/thermometer-plus-icon-dark.svg": "/weather_app/static/media/thermometer-plus-icon-dark.e5d4501dcef23673369dfda891c8adb4.svg",
+    "static/media/celsius-icon.svg": "/weather_app/static/media/celsius-icon.5f86fd9d6c57b2263d06f0678f0e3850.svg",
+    "static/media/github.svg": "/weather_app/static/media/github.7cafc125b69d09f207672a10ceb3da2b.svg",
+    "static/media/thermometer-minus-icon-light.svg": "/weather_app/static/media/thermometer-minus-icon-light.1aff79ed595e457cad156a1b8dae98f8.svg",
+    "static/media/thermometer-minus-icon-dark.svg": "/weather_app/static/media/thermometer-minus-icon-dark.e5fdae0aaf4c2a0d65688007d32b8f56.svg",
+    "static/media/speed-up-icon.svg": "/weather_app/static/media/speed-up-icon.7c13015722aea7c4abf3a8a47b94315c.svg",
+    "static/media/thermometer-icon.svg": "/weather_app/static/media/thermometer-icon.cd5646908311cee3152dd710865994a9.svg",
+    "static/media/close-light-icon.svg": "/weather_app/static/media/close-light-icon.f0792d2847d7551a1e34.svg",
+    "static/media/close-dark-icon.svg": "/weather_app/static/media/close-dark-icon.8a3b99806f1912cc272d.svg",
+    "static/media/search-icon.svg": "/weather_app/static/media/search-icon.03caad23c2a55fd0f14434677dcb1878.svg",
+    "static/media/wind-icon.svg": "/weather_app/static/media/wind-icon.51f7ca1e442249686750b834f83eff6b.svg",
+    "main.dd1b210f.css.map": "/weather_app/static/css/main.dd1b210f.css.map",
+    "main.fa14ea9c.js.map": "/weather_app/static/js/main.fa14ea9c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dd1b210f.css",
+    "static/js/main.fa14ea9c.js"
+  ]
+}
