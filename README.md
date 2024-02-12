@@ -20,25 +20,36 @@ The app is developed using **ReactJS**
 
 ## ⚡ Install
 
-- Clone this repository:
+-   Clone this repository:
 
 ```bash
 git clone https://github.com/MihirMistry2/weather_app.git
 ```
-- Install dependencies:
+
+-   Install dependencies:
+
 ```
 npm i
 ```
-- Run the app:
+
+-   Run the app:
+
 ```
 npm start
 ```
 
 <br>
+<br>
 
 ## 📘 Used libraries
 
 -   `ReactJS`
+    <br>
+    <br>
+
+## 🔗 Demo
+
+-   [Click Here](https://mihirmistry2.github.io/weather_app/) to see and check the weather details.
 
 <br>
 <br>
