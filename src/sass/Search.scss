@@ -9,7 +9,7 @@
     margin: 16px;
     height: 46px;
     display: flex;
-    width: clamp(25%, 500px, 90%);
+    width: -webkit-fill-available;
     input {
         background-color: $secondary-color;
         box-shadow: #00000014 0px 0px 0px;
