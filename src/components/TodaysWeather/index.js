@@ -35,24 +35,11 @@ const TodaysWeather = (props) => {
     return (
         <div className="todays-weather-temp-container">
             <div className="d-flex title">
-                weather (
-                <img
-                    className="celsius-icon"
-                    src={CelsiusIcon}
-                    alt="celsius icon"
-                    width="30px"
-                    height="30px"
-                />
-                )
+                weather (<img className="celsius-icon" src={CelsiusIcon} alt="celsius icon" width="30px" height="30px" />)
             </div>
             <div className="d-flex align-items justify-content temp-and-icon-container">
                 <div className="d-flex align-items justify-content icon-wrapper">
-                    <img
-                        src={props.icon}
-                        alt="weather icon"
-                        width="200px"
-                        height="200px"
-                    />
+                    <img src={props.icon} alt="weather icon" width="200px" height="200px" />
                 </div>
                 <div className="d-flex align-items justify-content temperature-wrapper">
                     {props.temperature}&deg;
@@ -61,41 +48,22 @@ const TodaysWeather = (props) => {
             <div className="d-flex info-container">
                 <div className="left-container">
                     <div className="d-flex align-items feels-like-wrapper">
-                        <img
-                            src={FeelsLikeIcon}
-                            alt="feels like icon"
-                            width="24px"
-                            height="24px"
-                        />
+                        <img src={FeelsLikeIcon} alt="feels like icon" width="24px" height="24px"/>
                         <span>feels like:&nbsp;{props.feels_like}&deg;</span>
                     </div>
                     <div className="d-flex align-items min-temp-wrapper">
-                        <img
-                            src={MinTempIcon}
-                            alt="min temp icon"
-                            width="24px"
-                            height="24px"
-                        />
+                        <img src={MinTempIcon} alt="min temp icon" width="24px" height="24px" />
                         <span>min:&nbsp;{props.min_temperature}&deg;</span>
                     </div>
                     <div className="d-flex align-items max-temp-wrapper">
-                        <img
-                            src={MaxTempIcon}
-                            alt="max temp icon"
-                            width="24px"
-                            height="24px"
-                        />
+                        <img src={MaxTempIcon} alt="max temp icon" width="24px" height="24px" />
                         <span>max:&nbsp;{props.max_temperature}&deg;</span>
                     </div>
                 </div>
                 <div className="right-container">
                     <div className="city-name-wrapper">{props.city_name}</div>
-                    <div className="day-time-wrapper">
-                        {getCurrentDayAndTime()}
-                    </div>
-                    <div className="description-wrapper">
-                        {props.description}
-                    </div>
+                    <div className="day-time-wrapper">{getCurrentDayAndTime()}</div>
+                    <div className="description-wrapper">{props.description}</div>
                 </div>
             </div>
         </div>

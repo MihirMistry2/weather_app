@@ -23,14 +23,7 @@ const TodaysForecast = ({ todaysForecast }) => {
                 {todaysForecast.map((obj, i) => (
                     <div className="info" key={i} id={i}>
                         <div className="time-wrapper">{obj.time}</div>
-                        <div className="icon-wrapper">
-                            <img
-                                src={obj.icon}
-                                alt="weather icon"
-                                width="86px"
-                                height="86px"
-                            />
-                        </div>
+                        <div className="icon-wrapper"><img src={obj.icon} alt="weather icon" width="86px" height="86px" /></div>
                         <div className="temp-wrapper">{obj.temp}&deg;</div>
                     </div>
                 ))}
