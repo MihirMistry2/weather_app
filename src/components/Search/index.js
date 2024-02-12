@@ -3,6 +3,7 @@ import { FetchFunctionContext } from '../../App';
 import SearchIcon from '../../assets/icons/search-icon.svg';
 import LoaderIcon from '../../assets/icons/loader-icon.svg';
 import SeachIcon from '../../assets/icons/search-icon.svg';
+import GitHubIcon from '../../assets/images/github.svg';
 import '../../sass/Search.scss';
 
 /**
@@ -59,9 +60,7 @@ const Search = (props, ref) => {
      */
     const onSearchChange = (e) => {
         const value = e.target.value;
-        const $input = document.querySelector(
-            '.main-container .search-container #search'
-        );
+        const $input = document.querySelector('.main-container .search-container #search');
         $input.classList.remove('error');
         setSearch(value);
     };
@@ -79,33 +78,20 @@ const Search = (props, ref) => {
         }
     };
 
-    useImperativeHandle(
-        ref,
-        () => {
-            return { getSearchValue, updateSearchButtonIconState };
-        },
-        []
-    );
+    useImperativeHandle(ref, () => {
+        return { getSearchValue, updateSearchButtonIconState };
+    }, []);
 
     return (
         <div className="search-container">
-            <input
-                type="search"
-                name="search"
-                id="search"
-                placeholder="Search..."
-                value={search}
-                onChange={onSearchChange}
-            />
+            <div className="github-wrapper">
+                <a className="icon-wrapper" href="https://github.com/MihirMistry2/weather_app" target="_blank" rel="noopener noreferrer">
+                    <img className="icon" src={GitHubIcon} alt="github icon" width="30px" height="30px" />
+                </a>
+            </div>
+            <input type="search" name="search" id="search" placeholder="Search..." value={search} onChange={onSearchChange} />
             <button className="search-btn" onClick={onSearchButtonClick}>
-                <img
-                    id="search-icon"
-                    className="search-icon"
-                    src={SearchIcon}
-                    alt="search icon"
-                    width="30px"
-                    height="30px"
-                />
+                <img id="search-icon" className="search-icon" src={SearchIcon} alt="search icon" width="30px" height="30px" />
             </button>
         </div>
     );

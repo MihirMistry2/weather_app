@@ -9,6 +9,7 @@
     margin: 16px;
     height: 46px;
     display: flex;
+    width: clamp(25%, 500px, 90%);
     input {
         background-color: $secondary-color;
         box-shadow: #00000014 0px 0px 0px;
@@ -18,7 +19,7 @@
         height: 46px;
         width: calc(100% - 46px);
         padding: 4px 10px 4px 16px;
-        margin-right: 12px;
+        margin: 0px 12px;
         font-size: 18px;
         outline: none;
         &.error {
@@ -63,6 +64,21 @@
         }
         &.not-allow {
             pointer-events: none;
+        }
+    }
+    .github-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        align-content: center;
+        .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #35455e;
+            padding: 8px;
+            border-radius: 16px;
+            cursor: pointer;
         }
     }
 }
