@@ -2,7 +2,11 @@
 
 .empty-screen-container {
     height: 100%;
-    width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
     .logo-container {
         height: calc(100% - 82px);
         .logo-wrapper {
@@ -19,5 +23,8 @@
         font-size: 18px;
         font-weight: 600;
         text-transform: capitalize;
+        text-wrap: wrap;
+        width: 80%;
+        text-align: center;
     }
 }
