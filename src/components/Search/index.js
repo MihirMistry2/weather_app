@@ -3,7 +3,7 @@ import { FetchFunctionContext } from '../../App';
 import SearchIcon from '../../assets/icons/search-icon.svg';
 import LoaderIcon from '../../assets/icons/loader-icon.svg';
 import SeachIcon from '../../assets/icons/search-icon.svg';
-import GitHubIcon from '../../assets/images/github.svg';
+
 import '../../sass/Search.scss';
 
 /**
