@@ -9,7 +9,8 @@
     box-shadow: #00000014 0px 0px 0px;
     padding: 22px 22px 6px 22px;
     max-height: 390px;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     .title {
         text-transform: uppercase;
         color: $secondary-font-color;
@@ -24,7 +25,7 @@
         .info {
             display: grid;
             grid-template-columns: calc(40% - 30px) 10% 20% 30%;
-            grid-template-rows: 60px;
+            grid-template-rows: 58px;
             align-items: stretch;
             justify-items: stretch;
             grid-gap: 10px;

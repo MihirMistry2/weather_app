@@ -9,6 +9,7 @@
     padding: 22px;
     max-height: 214px;
     overflow-x: auto;
+    overflow-y: hidden;
     .title {
         text-transform: uppercase;
         color: $secondary-font-color;
